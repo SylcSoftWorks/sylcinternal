@@ -1,19 +1,37 @@
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/ad-devlpr/imgui-lua/main/library.lua"))()
 
-
-
 do -- Example UI
-	local Window = library:AddWindow("sylc", {
+	local Window = library:AddWindow("Sylc", {
 		main_color = Color3.fromRGB(41, 74, 122),
 		min_size = Vector2.new(500, 600),
 		toggle_key = Enum.KeyCode.RightShift,
 		can_resize = true,
 	})
-    local Tab = Window:AddTab("Editor")
+	local Tab = Window:AddTab("Tab 1")
+
+	do -- Elements
+	
 
 
-    do
-     local Console = Tab:AddConsole({
+
+		Tab:AddKeybind("Keybind", function(key)
+			print(key)
+		end, { -- (options are optional)
+			["standard"] = Enum.KeyCode.Insert -- 
+		})
+
+		local Dropdown = Tab:AddDropdown("Dropdown", function(object)
+			print(object)
+		end)
+		for i = 1, 9 do
+			Dropdown:Add(tostring(i))
+		end
+		local obj = Dropdown:Add("10")
+		obj:Remove()
+
+	
+
+		local Console = Tab:AddConsole({
 			["y"] = 100,
 			["source"] = "Lua",
 		})
@@ -27,4 +45,10 @@ do -- Example UI
 		HA:AddButton("Clear", function()
 			Console:Set("")
 		end)
-        
+
+	
+	end
+
+	Tab:Show()
+	library:FormatWindows()
+end
