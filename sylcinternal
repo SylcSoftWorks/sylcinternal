@@ -4,21 +4,12 @@ do -- Example UI
 	local Window = library:AddWindow("Sylc", {
 		main_color = Color3.fromRGB(41, 74, 122),
 		min_size = Vector2.new(500, 600),
-		toggle_key = Enum.KeyCode.RightShift,
+		toggle_key = Enum.KeyCode.Insert,
 		can_resize = true,
 	})
 	local Tab = Window:AddTab("Tab 1")
 
-	do -- Elements
-	
-
-
-
-		Tab:AddKeybind("Keybind", function(key)
-			print(key)
-		end, { -- (options are optional)
-			["standard"] = Enum.KeyCode.Insert -- 
-		})
+	do -- Ele
 
 		local Dropdown = Tab:AddDropdown("Dropdown", function(object)
 			print(object)
