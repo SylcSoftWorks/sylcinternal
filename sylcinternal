@@ -1,0 +1,30 @@
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/ad-devlpr/imgui-lua/main/library.lua"))()
+
+
+
+do -- Example UI
+	local Window = library:AddWindow("sylc", {
+		main_color = Color3.fromRGB(41, 74, 122),
+		min_size = Vector2.new(500, 600),
+		toggle_key = Enum.KeyCode.RightShift,
+		can_resize = true,
+	})
+    local Tab = Window:AddTab("Editor")
+
+
+    do
+     local Console = Tab:AddConsole({
+			["y"] = 100,
+			["source"] = "Lua",
+		})
+		Console:Set("-- Gamer time!\nfor i = 1, 9 do \n    print(i)\nend")
+		print(Console:Get())
+
+		local HA = Tab:AddHorizontalAlignment()
+		HA:AddButton("Execute", function()
+			loadstring(Console:Get())()
+		end)
+		HA:AddButton("Clear", function()
+			Console:Set("")
+		end)
+        
